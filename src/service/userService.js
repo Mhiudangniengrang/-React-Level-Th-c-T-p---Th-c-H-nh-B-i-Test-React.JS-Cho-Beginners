@@ -1,5 +1,12 @@
 import axios from "./customize_axios";
-const fetchAllUser = () => {
-  return axios.get("/api/users?page=1");
+const fetchAllUser = (page) => {
+  return axios.get(`/api/users?page=${page}`);
 };
-export { fetchAllUser };
+
+const postNewUsers = (name, job) => {
+  return axios.post("/api/users", { name, job });
+};
+const putUpdateUsers = (name, job) => {
+  return axios.put("/api/users/2", { name, job });
+};
+export { fetchAllUser, postNewUsers, putUpdateUsers };
