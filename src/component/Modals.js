@@ -5,6 +5,9 @@ import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postNewUsers } from "../service/userService";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Modals = (props) => {
   const { handleUpdateUsers } = props;
   const [show, setShow] = useState(false);
@@ -36,10 +39,16 @@ const Modals = (props) => {
   return (
     <>
       <Button className="btn btn-success" onClick={handleShow}>
-        Add new users
+        <FontAwesomeIcon icon={faCirclePlus} /> Add new
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        {" "}
         <Modal.Header closeButton>
           <Modal.Title>Add new users</Modal.Title>
         </Modal.Header>

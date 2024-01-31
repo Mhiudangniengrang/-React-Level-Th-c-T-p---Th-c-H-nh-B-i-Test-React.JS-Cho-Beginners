@@ -1,5 +1,41 @@
-body {
-    div{
-        color: black;
+    .login-container{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    
+        .title{
+            text-align: center;
+            font-size: 25px;
+            font-weight: 600;
+            padding-top: 30px;
+        }
+        .text{
+            font-weight: 600;
+            padding-bottom: 3px;
+        }
+        input{
+            border: 1px solid  #1618230f;
+            border-radius: 3px;
+            padding:15px;
+            margin-bottom: 10px;
+            background: #1618230f;
+            outline: none;
+         &:hover{
+            background-color: rgb(231, 231, 231);
+         }
+        }
+        button{
+            padding: 15px;
+            font-size: 20px;
+            background-color: grey;
+            color: white;
+            &.active{
+                background-color: green;
+                color: white;
+            }
+        }
+        button[disabled=disabled], button:disabled {
+            cursor: not-allowed;
+        }
+        
     }
-}

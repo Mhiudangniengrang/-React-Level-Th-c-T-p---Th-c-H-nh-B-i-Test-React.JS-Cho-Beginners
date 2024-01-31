@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { putUpdateUsers } from "../service/userService";
 
 const ModalsEdit = (props) => {
-  const { show, handleClose, dataUsers } = props;
+  const { show, handleClose, dataUsers, handleEditUserFromModal } = props;
   const [formData, setformData] = useState({
     name: "",
     job: "",
@@ -19,6 +19,15 @@ const ModalsEdit = (props) => {
 
   const handleClickEdit = async () => {
     let res = await putUpdateUsers(formData.name, formData.job);
+    if (res && res.updatedAt) {
+      handleEditUserFromModal({
+        first_name: formData.name,
+        id: dataUsers.id,
+      });
+      handleClose();
+      toast.success("Updated success !");
+    }
+
     console.log(res);
   };
 
@@ -30,7 +39,7 @@ const ModalsEdit = (props) => {
     }
   }, [dataUsers]);
 
-//   console.log(dataUsers);
+  //   console.log(dataUsers);
   return (
     <>
       <Modal show={show} onHide={handleClose}>
